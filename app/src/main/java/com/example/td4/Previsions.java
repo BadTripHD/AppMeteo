@@ -33,7 +33,7 @@ public class Previsions implements Serializable {
     public ArrayList<Prevision> getPrevisionsArrayList(){
         ArrayList<Prevision> previsionList = new ArrayList<>();
         for(Prevision prevision : this.list){
-            Prevision w = new Prevision(prevision.getDate(),prevision.getMain(), prevision.getWeather(), prevision.getClouds(), prevision.getWind(), prevision.getSys());
+            Prevision w = new Prevision(prevision.getDt(),prevision.getMain(), prevision.getWeather(), prevision.getClouds(), prevision.getWind(), prevision.getSys(), prevision.getDt_txt());
             previsionList.add(w);
         }
         return previsionList;

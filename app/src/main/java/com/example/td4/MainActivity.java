@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         final TextView view = (TextView) findViewById(R.id.view);
 
-        String previsionWeather = "https://samples.openweathermap.org/data/2.5/forecast?id=524901&appid=b6907d289e10d714a6e88b30761fae22";
+        String previsionWeather = "https://api.openweathermap.org/data/2.5/forecast?q=Annecy&units=metric&appid=e350a9a737f730d58298ea189ede8287";
         final GsonRequest gsonRequest = new GsonRequest(previsionWeather, Previsions.class, null, new
                 Response.Listener<Previsions>() {
 

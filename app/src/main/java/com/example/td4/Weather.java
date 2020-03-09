@@ -56,4 +56,6 @@ public class Weather implements Serializable {
                 ", icon='" + icon + '\'' +
                 '}';
     }
+
+
 }

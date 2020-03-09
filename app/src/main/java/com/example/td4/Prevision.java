@@ -5,28 +5,30 @@ import java.util.List;
 
 public class Prevision implements Serializable {
 
-    private String date;
+    private int dt;
     private Main main;
     private List<Weather> weather;
     private Clouds clouds;
     private Wind wind;
     private Sys sys;
+    private String dt_txt;
 
-    public Prevision(String date, Main main, List<Weather> weather, Clouds clouds, Wind wind, Sys sys) {
-        this.date = date;
+    public Prevision(int dt, Main main, List<Weather> weather, Clouds clouds, Wind wind, Sys sys, String dt_txt) {
+        this.dt = dt;
         this.main = main;
         this.weather = weather;
         this.clouds = clouds;
         this.wind = wind;
         this.sys = sys;
+        this.dt_txt = dt_txt;
     }
 
-    public String getDate() {
-        return date;
+    public int getDt() {
+        return dt;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDt(int dt) {
+        this.dt = dt;
     }
 
     public Main getMain() {
@@ -69,15 +71,24 @@ public class Prevision implements Serializable {
         this.sys = sys;
     }
 
+    public String getDt_txt() {
+        return dt_txt;
+    }
+
+    public void setDt_txt(String dt_txt) {
+        this.dt_txt = dt_txt;
+    }
+
     @Override
     public String toString() {
         return "Prevision{" +
-                "date='" + date + '\'' +
+                "date='" + dt + '\'' +
                 ", main=" + main +
                 ", weather=" + weather +
                 ", clouds=" + clouds +
                 ", wind=" + wind +
                 ", sys=" + sys +
+                ", dt_txt=" + dt_txt +
                 '}';
     }
 }
