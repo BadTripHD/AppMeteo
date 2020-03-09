@@ -1,5 +1,6 @@
 package Adapters;
 
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position){
-        holder.tvId.setText(String.valueOf(dataModelList.get(position).getDt()));
+        holder.tvDate.setText(("Date : ") + String.valueOf(dataModelList.get(position).formatDate()));
+        holder.tvTemp.setText("Température : " + String.valueOf(dataModelList.get(position).getMain().getTemp()));
+
+        holder.tvDate.setTypeface(null, Typeface.BOLD);
     }
 
     public long getItemId(int position){
@@ -46,7 +50,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         TextView tvId;
         TextView tvDate;
-        TextView tvTableNumber;
+        TextView tvTemp;
         LinearLayout LLItemView;
 
         public RecyclerViewHolder(@NonNull View itemView){
@@ -54,7 +58,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             LLItemView = itemView.findViewById(R.id.LLItemView);
             tvId = itemView.findViewById(R.id.tvID);
             tvDate = itemView.findViewById(R.id.tvDate);
-            tvTableNumber = itemView.findViewById(R.id.tvTableNumber);
+            tvTemp = itemView.findViewById(R.id.tvTemp);
         }
     }
 }

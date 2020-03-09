@@ -91,6 +91,11 @@ public class Prevision implements Serializable {
                 ", dt_txt=" + dt_txt +
                 '}';
     }
+
+
+    public String formatDate() {
+        return this.dt_txt.substring(8,10)+ "/" + this.dt_txt.substring(5,7) + "/" +this.dt_txt.substring(0,4) + "  Heure : " + this.dt_txt.substring(11,16);
+    }
 }
 
 

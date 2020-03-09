@@ -3,7 +3,6 @@ package com.example.td4;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                         for(Prevision prevision : previsions.getPrevisionsArrayList()){
                             resultat += prevision.toString();
                         }
-                        Toast.makeText(MainActivity.this, resultat, Toast.LENGTH_LONG).show();
+                        //Toast.makeText(MainActivity.this, resultat, Toast.LENGTH_LONG).show();
                         RecyclerViewAdapter adapter = new RecyclerViewAdapter(previsions.getPrevisionsArrayList());
                         recyclerView.setAdapter(adapter);
 

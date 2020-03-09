@@ -29,7 +29,7 @@
             tools:text="cc" />
 
         <TextView
-            android:id="@+id/tvTableNumber"
+            android:id="@+id/tvTemp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="cc" />
