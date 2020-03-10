@@ -4,6 +4,7 @@ import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -32,10 +33,45 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position){
+        holder.tvDate.setTypeface(null, Typeface.BOLD);
         holder.tvDate.setText(("Date : ") + String.valueOf(dataModelList.get(position).formatDate()));
         holder.tvTemp.setText("Température : " + String.valueOf(dataModelList.get(position).getMain().getTemp()));
 
-        holder.tvDate.setTypeface(null, Typeface.BOLD);
+
+        switch (dataModelList.get(position).getWeather().get(0).getMain()) {
+            case "Rain":
+                holder.ivImg.setImageResource(R.drawable.ic_rain);
+                break;
+
+            case "Clouds":
+                holder.ivImg.setImageResource(R.drawable.ic_clouds);
+                break;
+
+            case "Thunderstorm":
+                holder.ivImg.setImageResource(R.drawable.ic_storm);
+                break;
+
+            case "Drizzle":
+                holder.ivImg.setImageResource(R.drawable.ic_rain);
+                break;
+
+            case "Snow":
+                holder.ivImg.setImageResource(R.drawable.ic_snowing);
+                break;
+
+                default:
+                    holder.ivImg.setImageResource(R.drawable.ic_sunny);
+        }
+
+       /* if(dataModelList.get(position).getWeather().get(0).getMain() == "Rain" ){
+            holder.ivImg.setImageResource(R.drawable.ic_rain);
+        } else if(dataModelList.get(position).getWeather().get(0).getMain() == "Clear") {
+            holder.ivImg.setImageResource(R.drawable.ic_sunny);
+        } else if(dataModelList.get(position).getWeather().get(0).getMain() == "Clouds") {
+            holder.ivImg.setImageResource(R.drawable.ic_clouds);
+        } else if(dataModelList.get(position).getWeather().get(0).getMain() == "Thunderstorm") {
+            holder.ivImg.setImageResource(R.drawable.ic_storm);
+        }*/
     }
 
     public long getItemId(int position){
@@ -48,7 +84,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
-        TextView tvId;
+        ImageView ivImg;
         TextView tvDate;
         TextView tvTemp;
         LinearLayout LLItemView;
@@ -56,7 +92,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public RecyclerViewHolder(@NonNull View itemView){
             super(itemView);
             LLItemView = itemView.findViewById(R.id.LLItemView);
-            tvId = itemView.findViewById(R.id.tvID);
+            ivImg = itemView.findViewById(R.id.ivImg);
             tvDate = itemView.findViewById(R.id.tvDate);
             tvTemp = itemView.findViewById(R.id.tvTemp);
         }
