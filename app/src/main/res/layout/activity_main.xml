@@ -6,17 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/m_t_o_app"
-        android:textSize="35sp"
-        tools:text="Météo App">
-
-
-    </TextView>
-
+    
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvWeather"
         android:layout_width="match_parent"

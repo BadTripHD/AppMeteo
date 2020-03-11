@@ -1,6 +1,6 @@
 package Adapters;
 
-import android.graphics.Typeface;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,9 +33,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position){
-        holder.tvDate.setTypeface(null, Typeface.BOLD);
-        holder.tvDate.setText(("Date : ") + String.valueOf(dataModelList.get(position).formatDate()));
-        holder.tvTemp.setText("Température : " + String.valueOf(dataModelList.get(position).getMain().getTemp()));
+        //holder.tvDate.setTypeface(null, Typeface.BOLD);
+        holder.tvDate.setText(Html.fromHtml("Date : " + String.valueOf(dataModelList.get(position).formatDate())));
+        holder.tvTemp.setText(Html.fromHtml("Température : <b>" + String.valueOf(Integer.toString(Math.round(dataModelList.get(position).getMain().getTemp())) + "°C</b>")));
 
 
         switch (dataModelList.get(position).getWeather().get(0).getMain()) {
@@ -62,16 +62,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 default:
                     holder.ivImg.setImageResource(R.drawable.ic_sunny);
         }
-
-       /* if(dataModelList.get(position).getWeather().get(0).getMain() == "Rain" ){
-            holder.ivImg.setImageResource(R.drawable.ic_rain);
-        } else if(dataModelList.get(position).getWeather().get(0).getMain() == "Clear") {
-            holder.ivImg.setImageResource(R.drawable.ic_sunny);
-        } else if(dataModelList.get(position).getWeather().get(0).getMain() == "Clouds") {
-            holder.ivImg.setImageResource(R.drawable.ic_clouds);
-        } else if(dataModelList.get(position).getWeather().get(0).getMain() == "Thunderstorm") {
-            holder.ivImg.setImageResource(R.drawable.ic_storm);
-        }*/
     }
 
     public long getItemId(int position){

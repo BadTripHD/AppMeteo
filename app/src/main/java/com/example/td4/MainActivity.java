@@ -1,8 +1,10 @@
 package com.example.td4;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +16,8 @@ import com.android.volley.VolleyError;
 import java.util.List;
 
 import Adapters.RecyclerViewAdapter;
+import Interfaces.RecyclerViewClickListener;
+import Listeners.RecyclerTouchListener;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +38,18 @@ public class MainActivity extends AppCompatActivity {
 
         setDatas();
 
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView, new RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                String temp = String.valueOf(Integer.toString(Math.round(dataWeather.get(position).getMain().getTemp())));
+                String date = String.valueOf(dataWeather.get(position).formatDate());
+
+                Intent infoMeteoIntent = new Intent(getApplicationContext(), InformationMeteoActivity.class);
+                infoMeteoIntent.putExtra("meteo",dataWeather.get(position));
+                startActivity(infoMeteoIntent);
+            }
+        }));
+
     }
 
     private void setDatas() {
@@ -50,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                             resultat += prevision.toString();
                         }
                         //Toast.makeText(MainActivity.this, resultat, Toast.LENGTH_LONG).show();
+                        dataWeather = previsions.getPrevisionsArrayList();
                         RecyclerViewAdapter adapter = new RecyclerViewAdapter(previsions.getPrevisionsArrayList());
                         recyclerView.setAdapter(adapter);
 

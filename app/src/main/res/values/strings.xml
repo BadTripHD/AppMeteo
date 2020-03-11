@@ -1,4 +1,3 @@
 <resources>
-    <string name="app_name">TD4</string>
-    <string name="m_t_o_app">Météo App</string>
+    <string name="app_name">Météo App</string>
 </resources>

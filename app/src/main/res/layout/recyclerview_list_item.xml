@@ -4,39 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LLItemView"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="152dp"
+    android:baselineAligned="false"
     android:orientation="horizontal">
-
-    <LinearLayout
-        android:layout_width="10dp"
-        android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/ivImg"
-            android:layout_width="109dp"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/ic_sunny" />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="9"
+        android:layout_weight="3"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvDate"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="cc" />
+            android:layout_weight="2"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvTemp"
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/ic_sunny" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    tools:text="cc" />
+
+                <TextView
+                    android:id="@+id/tvTemp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    tools:text="cc" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="cc" />
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <View
+                style="@style/Divider.Horizontal"
+                android:layout_height="match_parent" />
+        </LinearLayout>
 
     </LinearLayout>
 
