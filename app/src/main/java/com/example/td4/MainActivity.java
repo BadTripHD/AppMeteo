@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<Prevision> dataWeather;
+    private Previsions dataCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +42,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView, new RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
-                String temp = String.valueOf(Integer.toString(Math.round(dataWeather.get(position).getMain().getTemp())));
-                String date = String.valueOf(dataWeather.get(position).formatDate());
+                /*String temp = String.valueOf(Integer.toString(Math.round(dataWeather.get(position).getMain().getTemp())));
+                String date = String.valueOf(dataWeather.get(position).formatDate());*/
 
                 Intent infoMeteoIntent = new Intent(getApplicationContext(), InformationMeteoActivity.class);
                 infoMeteoIntent.putExtra("meteo",dataWeather.get(position));
+                infoMeteoIntent.putExtra("city", dataCity);
                 startActivity(infoMeteoIntent);
             }
         }));
@@ -61,11 +63,12 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onResponse(Previsions previsions) {
-                        String resultat = "";
+                        /*String resultat = "";
                         for(Prevision prevision : previsions.getPrevisionsArrayList()){
                             resultat += prevision.toString();
-                        }
+                        }*/
                         //Toast.makeText(MainActivity.this, resultat, Toast.LENGTH_LONG).show();
+                        dataCity = previsions;
                         dataWeather = previsions.getPrevisionsArrayList();
                         RecyclerViewAdapter adapter = new RecyclerViewAdapter(previsions.getPrevisionsArrayList());
                         recyclerView.setAdapter(adapter);

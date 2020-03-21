@@ -37,7 +37,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.tvDate.setText(Html.fromHtml("Date : " + String.valueOf(dataModelList.get(position).formatDate())));
         holder.tvTemp.setText(Html.fromHtml("Température : <b>" + String.valueOf(Integer.toString(Math.round(dataModelList.get(position).getMain().getTemp())) + "°C</b>")));
 
-
         switch (dataModelList.get(position).getWeather().get(0).getMain()) {
             case "Rain":
                 holder.ivImg.setImageResource(R.drawable.ic_rain);
@@ -85,6 +84,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             ivImg = itemView.findViewById(R.id.ivImg);
             tvDate = itemView.findViewById(R.id.tvDate);
             tvTemp = itemView.findViewById(R.id.tvTemp);
+
         }
     }
 }

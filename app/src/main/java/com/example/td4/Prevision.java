@@ -10,15 +10,17 @@ public class Prevision implements Serializable {
     private List<Weather> weather;
     private Clouds clouds;
     private Wind wind;
+    private Rain rain;
     private Sys sys;
     private String dt_txt;
 
-    public Prevision(int dt, Main main, List<Weather> weather, Clouds clouds, Wind wind, Sys sys, String dt_txt) {
+    public Prevision(int dt, Main main, List<Weather> weather, Clouds clouds, Wind wind, Rain rain, Sys sys, String dt_txt) {
         this.dt = dt;
         this.main = main;
         this.weather = weather;
         this.clouds = clouds;
         this.wind = wind;
+        this.rain = rain;
         this.sys = sys;
         this.dt_txt = dt_txt;
     }
@@ -79,16 +81,26 @@ public class Prevision implements Serializable {
         this.dt_txt = dt_txt;
     }
 
+    public Rain getRain() {
+        return rain;
+    }
+
+    public void setRain(Rain rain) {
+        this.rain = rain;
+    }
+
+
     @Override
     public String toString() {
         return "Prevision{" +
-                "date='" + dt + '\'' +
+                "dt=" + dt +
                 ", main=" + main +
                 ", weather=" + weather +
                 ", clouds=" + clouds +
                 ", wind=" + wind +
+                ", rain=" + rain +
                 ", sys=" + sys +
-                ", dt_txt=" + dt_txt +
+                ", dt_txt='" + dt_txt + '\'' +
                 '}';
     }
 
