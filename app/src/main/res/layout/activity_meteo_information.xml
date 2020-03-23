@@ -55,6 +55,15 @@
         app:layout_constraintTop_toBottomOf="@+id/img"
         tools:layout_editor_absoluteX="16dp" />
 
+    <View
+        android:id="@+id/view4"
+        style="@style/Divider.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        tools:layout_editor_absoluteX="-4dp" />
+
     <TextView
         android:id="@+id/idTemp2"
         android:layout_width="wrap_content"
@@ -223,7 +232,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="49dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="75dp"
         android:text="Plat de saison"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -233,9 +242,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="246dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="75dp"
         android:text="Partager"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <EditText
+        android:id="@+id/idNumTel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Numéro de téléphone"
+        android:inputType="phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

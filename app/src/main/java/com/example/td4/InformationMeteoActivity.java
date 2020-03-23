@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ public class InformationMeteoActivity extends AppCompatActivity {
     private ImageView img;
     private Date sunrise, sunset;
     private Button dishBtn, shareBtn;
+    private EditText numTel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,7 @@ public class InformationMeteoActivity extends AppCompatActivity {
 
         initializeUI();
 
-        Prevision p1 = (Prevision) getIntent().getSerializableExtra("meteo");
+        final Prevision p1 = (Prevision) getIntent().getSerializableExtra("meteo");
         Previsions ps1 = (Previsions) getIntent().getSerializableExtra("city");
 
         date.setText(Html.fromHtml("Date: " + p1.formatDate()));
@@ -103,7 +105,7 @@ public class InformationMeteoActivity extends AppCompatActivity {
 
             case "Snow":
                 img.setImageResource(R.drawable.ic_snowing);
-                weather.setText("Bruine");
+                weather.setText("Neige");
                 break;
 
             default:
@@ -117,13 +119,17 @@ public class InformationMeteoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Uri uri = Uri.parse("smsto:");
-                Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
-                intent.putExtra("sms_body", "The SMS text");
-                startActivity(intent);
 
-                Toast.makeText(InformationMeteoActivity.this, "Veuillez remplir le numéro de téléphone avant de partager", Toast.LENGTH_SHORT).show();
+                if(numTel != null && numTel.getText().toString().trim().length() > 0) {
 
+                    Uri uri = Uri.parse("smsto:" + numTel.getText());
+                    Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
+                    intent.putExtra("sms_body", "Voici la météo du " + p1.getDt_txt() + " il fera " + Integer.toString(Math.round(p1.getMain().getTemp())) + "°C et le temps sera " + weather.getText());
+                    startActivity(intent);
+
+                } else {
+                    Toast.makeText(InformationMeteoActivity.this, "Veuillez remplir le numéro de téléphone avant de partager", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -132,7 +138,10 @@ public class InformationMeteoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(InformationMeteoActivity.this, "Super 2", Toast.LENGTH_SHORT).show();
+                Intent dishGenerator = new Intent(getApplicationContext(), DishGeneratorActivity.class);
+                dishGenerator.putExtra("info",p1);
+                startActivity(dishGenerator);
+
             }
         });
 
@@ -153,7 +162,7 @@ public class InformationMeteoActivity extends AppCompatActivity {
         crepuscule = findViewById(R.id.idCrepuscule);
         dishBtn = findViewById(R.id.idDishBtn);
         shareBtn = findViewById(R.id.idShareBtn);
-
+        numTel = findViewById(R.id.idNumTel);
     }
 
 
